@@ -7,9 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProductScreen extends StatelessWidget {
-  const ProductScreen({Key? key}) : super(key: key);
+class ProductScreen extends StatefulWidget {
+   ProductScreen({Key? key}) : super(key: key);
   static const routeName = '/productScreen';
+
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  int itemsInCart = 0;
+
   @override
   Widget build(BuildContext context) {
     return IconTheme(
@@ -26,11 +34,18 @@ class ProductScreen extends StatelessWidget {
                   color: primaryDeepBlueText),
               onPressed: () {},
             ),
-            IconButton(
-              icon:
-                  Icon(Icons.shopping_bag_outlined, color: primaryDeepBlueText),
-              onPressed: () {},
-            ),
+          Stack(
+            children: [
+              IconButton(
+                icon:
+                Icon(Icons.shopping_bag_outlined, color: primaryDeepBlueText),
+                onPressed: () {},
+              ),
+             if(itemsInCart > 0) Positioned(child: ClipOval(child: Container(color: Colors.red, width: 15.sp, height: 15.sp, child: Center(
+                child: Text("$itemsInCart",style: TextStyle(color: Colors.white,fontSize: 10.sp, fontWeight: FontWeight.w700),),
+              ),)),right: 10, top: 5,)
+            ],
+          )
           ],
         ),
         body: SingleChildScrollView(
@@ -94,7 +109,11 @@ class ProductScreen extends StatelessWidget {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          itemsInCart++;
+                        });
+                      },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -119,50 +138,7 @@ class ProductScreen extends StatelessWidget {
                 Divider(
                   height: 1,
                 ),
-                addVerticalSpace(14.h),
-                Text(
-                  "Package size",
-                  style: GoogleFonts.overpass(
-                      color: primaryDeepBlueText,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp),
-                ),
-                addVerticalSpace(16.h),
-                Row(children: [
-                  Container(
-                    width: 79.w,
-                    height: 68.h,
-                    padding: EdgeInsets.only(top: 12.h, left: 10.h),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFA41B).withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(6.r),
-                      border: Border.all(
-                        color: Color(0xFFFFA41B),
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "GHC 60",
-                          style: GoogleFonts.overpass(
-                              color: Color(0xFFFFA41B),
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp),
-                        ),
-                        addVerticalSpace(5.h),
-                        Text(
-                          "50 pelletes",
-                          style: GoogleFonts.overpass(
-                              color: Color(0xFFFFA41B),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12.sp),
-                        ),
-                      ],
-                    ),
-                  ),
-                ]),
+
                 addVerticalSpace(10.h),
                 Text(
                   "Product Details",

@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
           ),
           addVerticalSpace(3.h),
           Text(
-            "Welcome to Amer Rx",
+            "Welcome to NewRx",
             style: GoogleFonts.overpass(
               color: Color(0xFF1A2D5D),
               fontSize: 16.0.sp,
@@ -185,25 +185,25 @@ class HomeScreen extends StatelessWidget {
       child: Row(
         children: [
           TopCategoryChip(
-              imgUrl: "condom",
-              title: "Condom",
-              bg: linearGradient(180, ["#D8E7FE 0%", "#2F78E4 100%"])),
+              imgUrl: "img",
+              title: "Dental",
+              bg: linearGradient(180, ["#FF9598 0%", "#FF70A7 100%"])),
           TopCategoryChip(
-              imgUrl: "pills",
-              title: "Pills",
-              bg: linearGradient(180, ["#FCCACA 0%", "#F29191 100%"])),
+              imgUrl: "img_1",
+              title: "Wellness",
+              bg: linearGradient(180, ["#19E5A5 0%", "#15BD92 100%"])),
           TopCategoryChip(
-              imgUrl: "menstural_care",
-              title: "Menstural\nCare",
+              imgUrl: "img_2",
+              title: "Homeo",
               bg: linearGradient(180, ["#FFC06F 0%", "#FF793A 100%"])),
           TopCategoryChip(
-              imgUrl: "pleasure_items",
-              title: "Pleasure\nitems",
-              bg: linearGradient(180, ["#C2B4E8 0%", "#8636C6 100%"])),
+              imgUrl: "img_3",
+              title: "Eye\ncare",
+              bg: linearGradient(180, ["#4DB7FF 0%", "#3E7DFF 100%"])),
           TopCategoryChip(
-              imgUrl: "sexual_enhancement",
-              title: "Sexual\nEnhancement",
-              bg: linearGradient(180, ["#A39E9E 0%", "#094734 100%"])),
+              imgUrl: "img_5",
+              title: "Skin & Hair",
+              bg: linearGradient(180, ["#828282 0%", "#090F47 100%"])),
         ],
       ),
     );
@@ -287,7 +287,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 addVerticalSpace(8.h),
                 Text(
-                  "Accu-Check",
+                  "Roche",
                   style: GoogleFonts.overpass(
                       color: primaryDeepBlueText,
                       fontSize: 13.sp,
@@ -320,7 +320,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 addVerticalSpace(8.h),
                 Text(
-                  "Accu-Check",
+                  "Ferring",
                   style: GoogleFonts.overpass(
                       color: primaryDeepBlueText,
                       fontSize: 13.sp,
@@ -353,7 +353,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 addVerticalSpace(8.h),
                 Text(
-                  "Accu-Check",
+                  "Novartis",
                   style: GoogleFonts.overpass(
                       color: primaryDeepBlueText,
                       fontSize: 13.sp,

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CCElevatedButton extends StatelessWidget {
-  const CCElevatedButton({Key? key, required this.text, required this.onPress})
+  const CCElevatedButton({Key? key,this.isDisabled = false, required this.text, required this.onPress})
       : super(key: key);
   final String text;
   final VoidCallback onPress;
+  final bool isDisabled;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPress,
+      onPressed:isDisabled ? null : onPress,
       child: Text(
         text,
         style: TextStyle(

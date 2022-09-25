@@ -1,3 +1,4 @@
+import 'package:contra/screens/auth/login_screen.dart';
 import 'package:contra/screens/auth/signup_screen.dart';
 import 'package:contra/screens/cart/cart_screen.dart';
 import 'package:contra/screens/home/bottom_nav_screen.dart';
@@ -40,8 +41,9 @@ class MyApp extends StatelessWidget {
             colorScheme:
                 Theme.of(context).colorScheme.copyWith(primary: primaryColor),
           ),
-          initialRoute: BottomNavScreen.routeName,
+          initialRoute: OnBoardingStart.routeName,
           onGenerateRoute: (settings) {
+
             switch (settings.name) {
               case OnBoardingStart.routeName:
                 return MaterialPageRoute(
@@ -61,8 +63,14 @@ class MyApp extends StatelessWidget {
                 );
 
               case CategoryScreen.routeName:
+
+                final args = settings.arguments as Map;
+
                 return MaterialPageRoute(
-                  builder: (context) => CategoryScreen(),
+
+                builder: (context) => CategoryScreen(
+                    category: args["category"] as String,
+                  ),
                 );
 
               case ProductScreen.routeName:
@@ -82,7 +90,10 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(
                   builder: (context) => PaymentConfirmScreen(),
                 );
-
+              case LoginScreen.routeName:
+                return MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                );
 
               default:
                 return null;

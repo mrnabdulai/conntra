@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_like_css/gradient_like_css.dart';
 import 'package:contra/screens/categories/category_screen.dart';
+
 class TopCategoryChip extends StatelessWidget {
   const TopCategoryChip(
       {required this.imgUrl, required this.title, Key? key, required this.bg})
@@ -16,8 +17,9 @@ class TopCategoryChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.of(context).pushNamed(CategoryScreen.routeName);
+      onTap: () {
+        Navigator.of(context).pushNamed(CategoryScreen.routeName,
+            arguments: {"category": title});
       },
       child: Ink(
         child: Container(

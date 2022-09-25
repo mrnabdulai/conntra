@@ -60,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontSize: 20.sp
                     ),),
-                    Text("Welcome to Amer Rx", style: GoogleFonts.overpass(
+                    Text("Welcome to  NewRx", style: GoogleFonts.overpass(
                         color: primaryGreyText,
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp

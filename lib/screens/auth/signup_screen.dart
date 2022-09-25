@@ -1,4 +1,5 @@
 import 'package:contra/constants/colors.dart';
+import 'package:contra/screens/auth/login_screen.dart';
 import 'package:contra/utils/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -131,7 +132,9 @@ color: primaryDeepBlueText.withOpacity(0.75)
                     color: primaryDeepBlueText.withOpacity(0.45)
                   ),
                 ),
-                 onPressed: (){},
+                 onPressed: (){
+                  Navigator.pushNamed(context,LoginScreen.routeName);
+                 },
               ),
             )
 

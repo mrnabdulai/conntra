@@ -12,9 +12,27 @@ import 'package:iconify_flutter/icons/uil.dart';
 
 import '../payment/payment_screen.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
+class CartScreen extends StatefulWidget {
+   CartScreen({Key? key}) : super(key: key);
   static const routeName = '/cart';
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  bool _firstItemIsRemoved = false;
+  int totalCartItems = 2;
+  bool _secondItemIsRemoved = false;
+
+  bool allAreRemoved (){
+
+    if(_firstItemIsRemoved && _secondItemIsRemoved){
+      return true;
+    }
+    return  false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +58,7 @@ class CartScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "2 Items in Your Cart",
+                  "$totalCartItems Items in Your Cart",
                   style: GoogleFonts.overpass(
                     color: primaryGreyText,
                     fontSize: 14.sp,
@@ -68,41 +86,53 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             addVerticalSpace(24.h),
-            CartItem(),
-            CartItem(),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              height: 48.h,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.0.r),
-                border: Border.all(
-                    width: 1, color: Color(0xFFE0E0E0).withOpacity(0.6)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Iconify(Ri.coupon_line),
-                      addHorizontalSpace(10.w),
-                      Text("1 Coupon Applied",
-                          style: GoogleFonts.poppins(
-                            color: Color(0xFF27AE60),
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w600,
-                          ))
-                    ],
-                  ),
-                  Iconify(
-                    Uil.times_circle,
-                    size: 20.sp,
-                    color: Colors.black.withOpacity(0.25),
-                  ),
-                ],
-              ),
-            ),
+
+         !_firstItemIsRemoved ?     CartItem(onRemove: (){
+              setState(() {
+                _firstItemIsRemoved = true;
+                totalCartItems --;
+              });
+            }, isRemoved: _firstItemIsRemoved,) : Container(),
+           if(!_secondItemIsRemoved) CartItem(onRemove: (){
+              setState(() {
+                _secondItemIsRemoved = true;
+                totalCartItems --;
+
+              });
+            }, isRemoved: _secondItemIsRemoved,),
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 16.w),
+            //   height: 48.h,
+            //   width: double.maxFinite,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(6.0.r),
+            //     border: Border.all(
+            //         width: 1, color: Color(0xFFE0E0E0).withOpacity(0.6)),
+            //   ),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Row(
+            //         mainAxisSize: MainAxisSize.min,
+            //         children: [
+            //           Iconify(Ri.coupon_line),
+            //           addHorizontalSpace(10.w),
+            //           Text("1 Coupon Applied",
+            //               style: GoogleFonts.poppins(
+            //                 color: Color(0xFF27AE60),
+            //                 fontSize: 14.0,
+            //                 fontWeight: FontWeight.w600,
+            //               ))
+            //         ],
+            //       ),
+            //       Iconify(
+            //         Uil.times_circle,
+            //         size: 20.sp,
+            //         color: Colors.black.withOpacity(0.25),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             addVerticalSpace(24.h),
             Text("Payment Summary",
                 style: GoogleFonts.poppins(
@@ -120,7 +150,7 @@ class CartScreen extends StatelessWidget {
                       fontSize: 14.0,
                       fontWeight: FontWeight.w400,
                     )),
-                Text("GHC 128",
+                Text( allAreRemoved() ? "GHC 0" : "GHC 128",
                     style: GoogleFonts.poppins(
                       color: primaryDeepBlueText,
                       fontSize: 14.0,
@@ -138,7 +168,7 @@ class CartScreen extends StatelessWidget {
                       fontSize: 14.0,
                       fontWeight: FontWeight.w400,
                     )),
-                Text("-GHC 92",
+                Text( allAreRemoved() ? "GHC 0"  : "-GHC 92",
                     style: GoogleFonts.poppins(
                       color: primaryDeepBlueText,
                       fontSize: 14.0,
@@ -147,23 +177,23 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             addVerticalSpace(15.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Coupon Discount",
-                    style: GoogleFonts.poppins(
-                      color: primaryGreyText,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w400,
-                    )),
-                Text("-GHC 15",
-                    style: GoogleFonts.poppins(
-                      color: primaryDeepBlueText,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w400,
-                    )),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Text("Coupon Discount",
+            //         style: GoogleFonts.poppins(
+            //           color: primaryGreyText,
+            //           fontSize: 14.0,
+            //           fontWeight: FontWeight.w400,
+            //         )),
+            //     Text("-GHC 15",
+            //         style: GoogleFonts.poppins(
+            //           color: primaryDeepBlueText,
+            //           fontSize: 14.0,
+            //           fontWeight: FontWeight.w400,
+            //         )),
+            //   ],
+            // ),
             addVerticalSpace(15.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,7 +226,7 @@ class CartScreen extends StatelessWidget {
                       fontSize: 16.0,
                       fontWeight: FontWeight.w400,
                     )),
-                Text("GHC 200",
+                Text(allAreRemoved() ? "GHC 0" : "GHC 200",
                     style: GoogleFonts.poppins(
                       color: primaryDeepBlueText,
                       fontSize: 16.0,
@@ -206,7 +236,8 @@ class CartScreen extends StatelessWidget {
             ),
             addVerticalSpace(30.h),
             CCElevatedButton(
-                text: "Place Order @ GHC 200",
+              isDisabled:allAreRemoved(),
+                text: "Place Order @ ${allAreRemoved() ? "GHC 0" : "GHC 200"}",
                 onPress: () {
                   Navigator.pushNamed(context, PaymentScreen.routeName);
                 }),

@@ -9,9 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({Key? key}) : super(key: key);
+class PaymentScreen extends StatefulWidget {
+  PaymentScreen({Key? key}) : super(key: key);
   static const routeName = '/paymentSelect';
+
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+  String selectedPaymentMethod = "vodafone";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,18 +127,59 @@ class PaymentScreen extends StatelessWidget {
                       color: primaryDeepBlueText.withOpacity(0.1), width: 1)),
               child: Column(
                 children: [
-                  PaymentTile(title: "Credit Card"),
-                  PaymentTile(title: "Momo"),
-                  PaymentTile(title: "Apple Pay"),
-                  PaymentTile(title: "Cash"),
+                  PaymentTile(
+                    title: "VODAFONE CASH",
+                    imgPath: "vodafone_cash",
+                    groupValue: selectedPaymentMethod,
+                    value: "vodafone",
+                    onChange: (value){
+                      setState(() {
+                        selectedPaymentMethod = value!;
+                      });
+                    },
+                  ),
+                  PaymentTile(
+                    title: "AIRTEL TIGO MONEY",
+                    imgPath: "airtel",
+                    groupValue: selectedPaymentMethod,
+                    value: "airtel",
+                    onChange: (value){
+                      setState(() {
+                        selectedPaymentMethod = value!;
+                      });
+                    },
+                  ),
+                  PaymentTile(
+                    title: "MTN MOBILE MONEY",
+                    imgPath: "mtn",
+                    groupValue: selectedPaymentMethod,
+                    value: "mtn",
+                    onChange: (value){
+                      setState(() {
+                        selectedPaymentMethod = value!;
+                      });
+                    },
+                  ),
+                  PaymentTile(
+                    title: "Cash",
+                    imgPath: "ghpay",
+                    groupValue: selectedPaymentMethod,
+                    value: "cash",
+                    onChange: (value){
+                      setState(() {
+                        selectedPaymentMethod = value!;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
             addVerticalSpace(70.h),
-            CCElevatedButton(text: "Place Order @ GHC 200", onPress: () {
-              Navigator.pushNamed(context, PaymentConfirmScreen.routeName);
-
-            }),
+            CCElevatedButton(
+                text: "Place Order @ GHC 200",
+                onPress: () {
+                  Navigator.pushNamed(context, PaymentConfirmScreen.routeName);
+                }),
             addVerticalSpace(30.h),
           ],
         ),
