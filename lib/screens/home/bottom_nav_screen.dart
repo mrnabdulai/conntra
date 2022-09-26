@@ -22,7 +22,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   final _screens = [
     HomeScreen(),
-    ScheduleScreen(),
+    // ScheduleScreen(),
     NewsScreen(),
     OrdersScreen(),
     ProfileScreen()
@@ -54,18 +54,18 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
               ),
               label: "Home",
             ),
-            BottomNavigationBarItem(
-                icon: Iconify(
-                  Uil.clock,
-                  color: _currentBottomNavIndex == 1
-                      ? primaryColor
-                      : primaryGreyText,
-                ),
-                label: "Schedule"),
+            // BottomNavigationBarItem(
+            //     icon: Iconify(
+            //       Uil.clock,
+            //       color: _currentBottomNavIndex == 1
+            //           ? primaryColor
+            //           : primaryGreyText,
+            //     ),
+            //     label: "Schedule"),
             BottomNavigationBarItem(
                 icon: Iconify(
                   Uil.newspaper,
-                  color: _currentBottomNavIndex == 2
+                  color: _currentBottomNavIndex == 1
                       ? primaryColor
                       : primaryGreyText,
                 ),
@@ -73,7 +73,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             BottomNavigationBarItem(
                 icon: Iconify(
                   Uil.shopping_bag,
-                  color: _currentBottomNavIndex == 3
+                  color: _currentBottomNavIndex == 2
                       ? primaryColor
                       : primaryGreyText,
                 ),
@@ -81,7 +81,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             BottomNavigationBarItem(
                 icon: Iconify(
                   Uil.user,
-                  color: _currentBottomNavIndex == 4
+                  color: _currentBottomNavIndex == 3
                       ? primaryColor
                       : primaryGreyText,
                 ),

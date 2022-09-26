@@ -25,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
             )),
             addVerticalSpace(34.h),
             Text(
-              "Welcome to Amer Rx",
+              "Welcome to NewRx",
               style: TextStyle(
                 color: primaryDeepBlueText,
                 fontSize: 24.0.sp,

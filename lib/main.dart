@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) => MaterialApp(
-          title: 'Contra',
+          title: 'NewRX',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             //  TODO: Setup theme
