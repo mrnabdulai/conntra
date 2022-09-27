@@ -7,6 +7,7 @@ import 'package:contra/screens/on_boarding/on_boarding_start.dart';
 import 'package:contra/screens/payment/payment_confirm_screen.dart';
 import 'package:contra/screens/payment/payment_screen.dart';
 import 'package:contra/screens/products/product_screen.dart';
+import 'package:contra/service/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:contra/constants/colors.dart';
 import 'package:flutter/services.dart';
@@ -16,9 +17,10 @@ import 'package:contra/screens/categories/category_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark));
+  registerServices();
   runApp(const MyApp());
 }
 

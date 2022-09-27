@@ -1,4 +1,5 @@
 import 'package:contra/constants/api.dart';
+import 'package:contra/model/user.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
@@ -22,9 +23,10 @@ class ApiService {
     }
   }
 
-  Future signUp(/*TODO: Add user details to signup here*/) async {
+  Future signUp(User user, String confirmPassword) async {
     try {
-      Response res = await _dio.post('${API_BASE_URL}signUp', data: {});
+      Response res = await _dio.post('${API_BASE_URL}signUp',
+          data: {...user.toJson, 'password_confirmation': confirmPassword});
       if (res.statusCode == null) throw Exception('Invalid status code');
       String? msg = _getErrorMsg(res.statusCode!);
       //TODO: return user details here
